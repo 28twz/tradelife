@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion / Inscription – TradeLife</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- SDK Supabase (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">TradeLife</div>
+    <nav>
+        <a href="../index.html">Accueil</a>
+        <a href="../index.html#formations">Formations</a>
+    </nav>
+</header>
+
+<main class="auth-container">
+    <div class="auth-card">
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login">Connexion</button>
+            <button class="auth-tab" id="tab-signup">Inscription</button>
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <form id="form-login" class="auth-form">
+            <div class="input-group">
+                <label for="login-email">Adresse e-mail</label>
+                <input type="email" id="login-email" required placeholder="exemple@email.com">
+            </div>
+            <div class="input-group">
+                <label for="login-password">Mot de passe</label>
+                <input type="password" id="login-password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-auth">Se connecter</button>
+        </form>
+
+        <!-- Formulaire d'inscription -->
+        <form id="form-signup" class="auth-form" style="display: none;">
+            <div class="input-group">
+                <label for="signup-email">Adresse e-mail</label>
+                <input type="email" id="signup-email" required placeholder="exemple@email.com">
+            </div>
+            <div class="input-group">
+                <label for="signup-password">Mot de passe</label>
+                <input type="password" id="signup-password" required placeholder="Au moins 6 caractères">
+            </div>
+            <button type="submit" class="btn-auth">Créer un compte</button>
+        </form>
+
+        <p id="auth-feedback" class="auth-feedback"></p>
+    </div>
+</main>
+
+<script src="../assets/js/auth.js"></script>
+<script>
+    // Basculement dynamique entre Onglet Connexion et Inscription
+    const tabLogin = document.getElementById('tab-login');
+    const tabSignup = document.getElementById('tab-signup');
+    const formLogin = document.getElementById('form-login');
+    const formSignup = document.getElementById('form-signup');
+    const feedback = document.getElementById('auth-feedback');
+
+    tabLogin.addEventListener('click', () => {
+        tabLogin.classList.add('active');
+        tabSignup.classList.remove('active');
+        formLogin.style.display = 'flex';
+        formSignup.style.display = 'none';
+        feedback.textContent = '';
+    });
+
+    tabSignup.addEventListener('click', () => {
+        tabSignup.classList.add('active');
+        tabLogin.classList.remove('active');
+        formSignup.style.display = 'flex';
+        formLogin.style.display = 'none';
+        feedback.textContent = '';
+    });
+</script>
+
+</body>
+</html>
