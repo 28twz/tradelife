@@ -1,117 +1,82 @@
-/* ==========================================================================
-   1. RESET & FONTS
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    background: #000;
-    color: #fff;/* ==========================================================================
-   1. RESET & FONTS & VARIABLES
-   ========================================================================== */
+/* --- BASE & VARIABLES --- */
 :root {
-    --bg-dark: #070a0f;
-    --card-bg: rgba(15, 23, 36, 0.65);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --primary-green: #00e676;
-    --primary-hover: #00b359;
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --bg-main: #0b0e14;
+    --card-bg: rgba(18, 26, 38, 0.85);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --green-accent: #00ff66;
+    --green-hover: #00cc52;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --font: 'Inter', system-ui, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-family);
+    font-family: var(--font);
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. NAVBAR (Glassmorphism)
-   ========================================================================== */
+/* --- NAVBAR --- */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(7, 10, 15, 0.75);
-    backdrop-filter: blur(12px);
+    background: rgba(11, 14, 20, 0.95);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--card-border);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .navbar .logo {
-    font-weight: 800; 
+    font-weight: 800;
     font-size: 1.5rem;
-    color: var(--text-main);
-    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
-.navbar .logo span {
-    color: var(--primary-green);
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .navbar nav a {
-    position: relative;
-    margin-left: 20px;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-green);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.navbar nav a:hover::after {
-    width: 100%;
+    transition: color 0.2s;
 }
 
 .navbar nav a:hover {
-    color: var(--primary-green);
+    color: var(--green-accent);
 }
 
 .btn-nav {
-    padding: 8px 18px;
-    background: var(--primary-green);
-    color: #000 !important;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: var(--green-accent) !important;
+    color: #000000 !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    text-decoration: none;
+    transition: transform 0.2s;
 }
 
 .btn-nav:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 230, 118, 0.4);
+    transform: scale(1.05);
 }
 
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
+/* --- HERO SECTION --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -119,7 +84,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
+    padding: 0 1rem;
 }
 
 .hero-video {
@@ -134,1260 +99,142 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(7, 10, 15, 0.4) 0%, rgba(7, 10, 15, 0.85) 100%);
+    background: rgba(11, 14, 20, 0.75);
     z-index: -1;
 }
 
 .hero-content {
-    background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--card-border);
-    padding: 50px 60px;
-    border-radius: 24px;
-    max-width: 750px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.hero-content h1 {
-    font-weight: 800;
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 15px;
-    background: linear-gradient(180deg, #ffffff 0%, var(--primary-green) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-content p {
-    font-weight: 400;
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    margin-bottom: 25px;
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 12px 28px;
-    background: var(--primary-green);
-    color: #000;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.3);
-}
-
-/* ==========================================================================
-   4. SECTIONS & CARDS
-   ========================================================================== */
-.section {
-    padding: 100px 40px;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section.dark {
-    background: transparent;
-}
-
-.separator {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
-    margin: 60px 0;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
-    padding: 30px;
-    border-radius: 16px;
-    width: 300px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 230, 118, 0.4);
-}
-
-.card h3 {
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-}
-
-.card .price {
-    display: block;
-    margin: 15px 0;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--primary-green);
-}
-
-.card button {
-    width: 100%;
-    padding: 12px 18px;
-    background: var(--primary-green);
-    color: #000;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.card button:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   5. QUI SOMMES-NOUS (#ABOUT)
-   ========================================================================== */
-#about {
-    padding: 80px 20px;
-    width: 100%;
-}
-
-#about .about-intro,
-#about .about-values {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    color: var(--text-main);
-}
-
-#about .about-intro h2 {
-    font-size: 2.4rem;
-    margin-bottom: 20px;
-    color: var(--primary-green);
-    font-weight: 700;
-}
-
-#about .about-intro p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    margin-bottom: 60px;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#about .about-values h3 {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 25px;
-    border-bottom: 2px solid var(--primary-green);
-    padding: 0 40px 14px;
-}
-
-#about .about-values ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 30px;
-    display: inline-block;
-    text-align: left;
-    color: var(--primary-green);
-    font-weight: 500;
-    font-size: 1.05rem;
-}
-
-#about .about-values ul li {
-    margin-bottom: 12px;
-}
-
-#about .about-values p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-style: italic;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* ==========================================================================
-   6. TESTIMONIALS / TRUSTPILOT
-   ========================================================================== */
-#testimonials .trust-soon {
-    max-width: 600px;
-    margin: 0 auto;
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid var(--card-border);
-    padding: 30px;
+    padding: 3rem 2rem;
     border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.5s, opacity 0.5s;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-#testimonials .trust-soon.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.trust-badge {
-    font-weight: 600;
-    color: var(--primary-green);
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.trust-title {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.trust-text,
-.trust-sub {
-    font-weight: 400;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-/* ==========================================================================
-   7. FORMULAIRE DE CONTACT
-   ========================================================================== */
-#contact h2 {
-    margin-bottom: 40px; 
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid var(--card-border);
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: border-color 0.3s ease;
-}
-
-.contact-form textarea {
-    resize: none;
-    overflow-y: auto;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--primary-green);
-    outline: none;
-}
-
-.contact-form button {
-    padding: 14px;
-    border: none;
-    border-radius: 50px;
-    background: var(--primary-green);
-    color: #000;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.contact-form button:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-}
-
-#form-feedback {
-    text-align: center;
-    font-weight: 500;
-    margin-top: 10px;
-}
-
-/* ==========================================================================
-   8. FOOTER ADVANCED
-   ========================================================================== */
-.footer-advanced {
-    background-color: #040609;
-    color: var(--text-main);
-    padding: 60px 5%;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-top: 1px solid var(--card-border);
-}
-
-.footer-main {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.footer-left {
-    flex: 2 1 600px;
-    max-width: 70%;
-}
-
-.footer-left p {
-    margin-bottom: 15px;
-    color: var(--text-muted);
-}
-
-.footer-left .disclaimer {
-    font-size: 0.78rem;
-    color: #64748b;
-    margin-top: 20px;
-}
-
-.footer-right {
-    flex: 1 1 300px;
-    max-width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    gap: 15px;
-}
-
-.qualioipi-logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.certification-text {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.cert-link {
-    color: var(--primary-green);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cert-link:hover {
-    text-decoration: underline;
-}
-
-.footer-nav {
-    margin-top: 25px;
-}
-
-.footer-nav a {
-    color: var(--primary-green);
-    margin-left: 20px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-nav a:first-child {
-    margin-left: 0;
-}
-
-.footer-nav a:hover {
-    color: var(--primary-hover);
-}
-
-.footer-socials {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.footer-socials p {
-    margin-bottom: 8px;
-}
-
-.footer-socials a {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.footer-socials a:first-child {
-    margin-left: 0;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
-}
-
-.social-icon:hover {
-    transform: scale(1.15);
-}
-
-/* ==========================================================================
-   9. MENTIONS LÉGALES & PAGES SECONDAIRES
-   ========================================================================== */
-.legal {
-    max-width: 900px;
-    margin: 120px auto 60px;
-    padding: 0 20px;
-    text-align: left;
-}
-
-.legal h1 {
-    color: var(--primary-green);
-    margin-bottom: 40px;
-}
-
-.legal h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: #fff;
-    font-weight: 600;
-}
-
-.legal p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-}
-
-.legal a {
-    color: var(--primary-green);
-    text-decoration: none;
-}
-
-.legal a:hover {
-    text-decoration: underline;
-}
-
-/* ==========================================================================
-   10. MODULE CONNEXION / INSCRIPTION
-   ========================================================================== */
-.auth-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 20px 40px;
-}
-
-.auth-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 40px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-}
-
-.auth-tabs {
-    display: flex;
-    margin-bottom: 25px;
-    border-bottom: 1px solid var(--card-border);
-}
-
-.auth-tab {
-    flex: 1;
-    padding: 10px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-.auth-tab.active {
-    color: var(--primary-green);
-    border-bottom: 2px solid var(--primary-green);
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.auth-form .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: left;
-}
-
-.auth-form label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.auth-form input {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--card-border);
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
-    font-size: 1rem;
-}
-
-.auth-form input:focus {
-    border-color: var(--primary-green);
-    outline: none;
-}
-
-.btn-auth {
-    padding: 12px;
-    background: var(--primary-green);
-    color: #000;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-}
-
-.btn-auth:hover {
-    background: var(--primary-hover);
-}
-
-.auth-feedback {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.auth-feedback.error {
-    color: #ff5252;
-}
-
-.auth-feedback.success {
-    color: var(--primary-green);
-}
-
-/* ==========================================================================
-   11. RESPONSIVE MOBILE
-   ========================================================================== */
-@media (max-width: 900px) {
-    .footer-main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-left,
-    .footer-right {
-        max-width: 100%;
-        flex: none;
-        text-align: center;
-        align-items: center;
-    }
-
-    .footer-right {
-        margin-top: 30px;
-    }
-
-    .footer-nav a {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .hero-content {
-        padding: 35px 25px;
-        margin: 0 20px;
-        max-width: 100%;
-    }
-}
-}
-
-/* ==========================================================================
-   2. NAVBAR
-   ========================================================================== */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    z-index: 100;
-}
-
-.navbar .logo {
-    font-weight: 700; 
-    font-size: 1.5rem;
-    color: #00ff44;
-}
-
-.navbar nav a {
-    position: relative;
-    margin-left: 20px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.navbar nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background-color: #33ff77;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.navbar nav a:hover::after {
-    width: 100%;
-}
-
-.navbar nav a:hover {
-    color: #33ff77;
-}
-
-.btn-nav {
-    padding: 8px 15px;
-    background: #00ff44;
-    color: #000;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.btn-nav:hover {
-    background: #33ff77;
-    transform: scale(1.05);
-}
-
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: -1;
-}
-
-.hero-content {
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(6px);
-    padding: 50px 60px;
-    border-radius: 20px;
-    max-width: 700px;
-    box-shadow: 0 0 30px rgba(0, 255, 68, 0.25);
+    max-width: 650px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .hero-content h1 {
-    font-weight: 500;
-    font-size: 3rem;
-    margin-bottom: 15px;
-    color: #00ff44;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: var(--green-accent);
 }
 
 .hero-content p {
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin-bottom: 25px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
 }
 
 .btn-primary {
-    padding: 12px 28px;
-    background: #00ff44;
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background: var(--green-accent);
     color: #000;
-    text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
     border-radius: 8px;
-    transition: background 0.3s, transform 0.3s;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
 .btn-primary:hover {
-    background: #33ff77;
-    transform: scale(1.05);
+    background: var(--green-hover);
+    transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   4. SECTIONS & CARDS
-   ========================================================================== */
+/* --- CARDS & SECTIONS --- */
 .section {
-    padding: 100px 40px;
+    padding: 5rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.section.dark {
-    background: #0a0a0a;
-}
-
-.separator {
-    height: 3px;
-    background: linear-gradient(to right, #00ff44, #000);
-    margin: 60px 0;
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
 }
 
 .cards {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 2rem;
     flex-wrap: wrap;
-    margin-top: 40px;
 }
 
 .card {
-    background: rgba(0,0,0,0.8);
-    padding: 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
-    width: 250px;
-    box-shadow: 0 0 10px #00ff44;
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 2rem;
+    width: 280px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px #33ff77;
+    transform: translateY(-5px);
+    border-color: var(--green-accent);
 }
 
 .card h3 {
-    color: #00ff44;
-    font-weight: 500;
-    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
 }
 
 .card .price {
-    display: block;
-    margin: 15px 0;
-    font-weight: 500;
-    color: #33ff77;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--green-accent);
+    margin-bottom: 1.5rem;
 }
 
 .card button {
-    padding: 10px 18px;
-    background: #00ff44;
+    padding: 0.8rem;
+    background: var(--green-accent);
     color: #000;
     border: none;
     border-radius: 6px;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: 500;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.2s;
 }
 
 .card button:hover {
-    background: #33ff77;
-    transform: scale(1.05);
+    background: var(--green-hover);
 }
 
-/* ==========================================================================
-   5. QUI SOMMES-NOUS (#ABOUT)
-   ========================================================================== */
-#about {
-  background: #0a0a0a;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  width: 100%;
-}
-
-#about .about-intro,
-#about .about-values {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  color: #eee;
-}
-
-#about .about-intro h2 {
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  color: #00ff44;
-  font-weight: 700;
-}
-
-#about .about-intro p {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 60px;
-  color: #ccc;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#about .about-values h3 {
-  display: block;
-  width: fit-content;
-  margin: 0 auto 25px;
-  border-bottom: 2px solid #33ff77;
-  padding: 0 125px 14px;
-}
-
-#about .about-values ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 30px;
-  display: inline-block;
-  text-align: left;
-  color: #00ff44;
-  font-weight: 500;
-  font-size: 1.05rem;
-  min-width: 280px;
-}
-
-#about .about-values ul li {
-  margin-bottom: 12px;
-}
-
-#about .about-values p {
-  color: #aaa;
-  font-size: 1rem;
-  font-style: italic;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-/* ==========================================================================
-   6. TESTIMONIALS / TRUSTPILOT
-   ========================================================================== */
-#testimonials .trust-soon {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.8);
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 15px #00ff44;
-    transition: transform 0.5s, opacity 0.5s;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-#testimonials .trust-soon.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.trust-badge {
-    font-weight: 500;
-    color: #00ff44;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.trust-title {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.trust-text,
-.trust-sub {
-    font-weight: 400;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-/* ==========================================================================
-   7. FORMULAIRE DE CONTACT
-   ========================================================================== */
-#contact h2 {
-    margin-bottom: 40px; 
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 12px;
-    border-radius: 6px;
-    border: 2px solid #00ff44;
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: border 0.3s, transform 0.3s;
-}
-
-.contact-form textarea {
-    resize: none;
-    overflow-y: auto;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #33ff77;
-    transform: scale(1.02);
-    outline: none;
-}
-
-.contact-form button {
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background: #00ff44;
-    color: #000;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.contact-form button:hover {
-    background: #33ff77;
-    transform: scale(1.05);
-}
-
-#form-feedback {
-    text-align: center;
-    font-weight: 500;
-    margin-top: 10px;
-}
-
-/* ==========================================================================
-   8. FOOTER ADVANCED
-   ========================================================================== */
+/* --- FOOTER & PAGES --- */
 .footer-advanced {
-    background-color: #000;
-    color: #fff;
-    padding: 40px 60px;
+    background: #06080c;
+    border-top: 1px solid var(--card-border);
+    padding: 3rem 5%;
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.5;
-    border-top: 3px solid #00ff44;
-}
-
-.footer-main {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.footer-left {
-    flex: 2 1 600px;
-    max-width: 70%;
-}
-
-.footer-left p {
-    margin-bottom: 15px;
-}
-
-.footer-left .disclaimer {
-    font-size: 0.75rem;
-    color: #a5a5a5;
-    margin-top: 20px;
-}
-
-.footer-right {
-    flex: 1 1 300px;
-    max-width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    gap: 15px;
-}
-
-.qualioipi-logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.certification-text {
-    font-size: 0.85rem;
-    color: #ccc;
-}
-
-.cert-link {
-    color: #00ff44;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cert-link:hover {
-    color: #33ff77;
-    text-decoration: underline;
-}
-
-.footer-nav {
-    margin-top: 25px;
-}
-
-.footer-nav a {
-    color: #00ff44;
-    margin-left: 20px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-nav a:first-child {
-    margin-left: 0;
-}
-
-.footer-nav a:hover {
-    color: #33ff77;
-}
-
-.footer-socials {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 0.85rem;
-    color: #aaa;
-    font-weight: 500;
-}
-
-.footer-socials p {
-    margin-bottom: 8px;
-    letter-spacing: 0.03em;
-}
-
-.footer-socials a {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.footer-socials a:first-child {
-    margin-left: 0;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-    filter: none;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
-}
-
-.social-icon:hover {
-    transform: scale(1.1);
-}
-
-/* ==========================================================================
-   9. MENTIONS LÉGALES & PAGES SECONDAIRES
-   ========================================================================== */
-.legal {
-    max-width: 900px;
-    margin: 120px auto 60px;
-    padding: 0 20px;
-    text-align: left;
-}
-
-.legal h1 {
-    color: #00ff44;
-    margin-bottom: 40px;
-}
-
-.legal h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: #33ff77;
-    font-weight: 500;
-}
-
-.legal p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #ddd;
-}
-
-.legal a {
-    color: #00ff44;
-    text-decoration: none;
-}
-
-.legal a:hover {
-    text-decoration: underline;
-}
-
-/* ==========================================================================
-   10. MODULE CONNEXION / INSCRIPTION (NOUVEAU)
-   ========================================================================== */
-.auth-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 20px 40px;
 }
 
 .auth-card {
-    background: rgba(10, 10, 10, 0.95);
-    border: 1px solid #00ff44;
-    border-radius: 16px;
-    padding: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 2.5rem;
+    border-radius: 12px;
     width: 100%;
-    max-width: 420px;
-    box-shadow: 0 0 25px rgba(0, 255, 68, 0.2);
-}
-
-.auth-tabs {
-    display: flex;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #333;
-}
-
-.auth-tab {
-    flex: 1;
-    padding: 10px;
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-.auth-tab.active {
-    color: #00ff44;
-    border-bottom: 2px solid #00ff44;
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.auth-form .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: left;
-}
-
-.auth-form label {
-    font-size: 0.85rem;
-    color: #ccc;
-}
-
-.auth-form input {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #333;
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-}
-
-.auth-form input:focus {
-    border-color: #00ff44;
-    outline: none;
-}
-
-.btn-auth {
-    padding: 12px;
-    background: #00ff44;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s;
-}
-
-.btn-auth:hover {
-    background: #33ff77;
-}
-
-.auth-feedback {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.auth-feedback.error {
-    color: #ff4444;
-}
-
-.auth-feedback.success {
-    color: #00ff44;
-}
-
-/* ==========================================================================
-   11. RESPONSIVE MOBILE
-   ========================================================================== */
-@media (max-width: 900px) {
-    .footer-main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-left,
-    .footer-right {
-        max-width: 100%;
-        flex: none;
-        text-align: center;
-        align-items: center;
-    }
-
-    .footer-right {
-        margin-top: 30px;
-    }
-
-    .footer-nav a {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .hero-content {
-        padding: 35px 25px;
-        margin: 0 20px;
-        max-width: 100%;
-    }
+    max-width: 400px;
+    margin: 6rem auto;
 }
