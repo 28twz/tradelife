@@ -1,8 +1,7 @@
-// Smooth scroll pour les liens de navigation
+// Smooth Scroll pour la navigation[cite: 18]
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
         const href = link.getAttribute('href');
-        // Vérifie si c'est un lien d'ancrage (#)
         if (href && href.startsWith('#')) {
             e.preventDefault();
             const target = document.querySelector(href);
@@ -13,17 +12,16 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Animation de visibilité de la box Trustpilot
-const trustBox = document.querySelector('#testimonials .trust-soon');
+// Animation au défilement pour la box Trustpilot et les Cartes[cite: 18]
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
 
-function checkVisibility() {
-    if (!trustBox) return;
-
-    const rect = trustBox.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-        trustBox.classList.add('visible');
-    }
-}
-
-window.addEventListener('scroll', checkVisibility);
-window.addEventListener('load', checkVisibility);
+document.addEventListener('DOMContentLoaded', () => {
+    const trustBox = document.querySelector('#testimonials .trust-soon');
+    if (trustBox) observer.observe(trustBox);
+});
