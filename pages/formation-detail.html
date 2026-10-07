@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de la Formation – TradeLife</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .detail-container {
+            max-width: 900px;
+            margin: 7rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .comparison-table th:first-child, .comparison-table td:first-child {
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+        }
+        .check { color: var(--primary-green); font-weight: 800; font-size: 1.2rem; }
+        .cross { color: #ef4444; font-weight: 800; font-size: 1.2rem; }
+        .highlight-col { background: rgba(0, 255, 102, 0.05); }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <a href="../index.html" class="logo">TradeLife</a>
+    <nav class="nav-menu">
+        <a href="../index.html#home">Accueil</a>
+        <a href="../index.html#formations">Formations</a>
+        <a href="login.html" class="btn-nav">Connexion</a>
+    </nav>
+</header>
+
+<main class="detail-container">
+    <div style="text-align: center;">
+        <h1 id="course-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Offre Formation</h1>
+        <p id="course-subtitle" style="color: var(--text-secondary); font-size: 1.1rem;"></p>
+    </div>
+
+    <!-- Tableau Comparatif style Assurance -->
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Inclus dans ton programme</th>
+                <th>Débutant (99€)</th>
+                <th>Intermédiaire (199€)</th>
+                <th>Avancé (299€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bases du trading & Vocabulaire des marchés</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+                <td>Prise en main des plateformes de trading</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+                <td>Gestion du risque & Money Management</td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+                <td>Psychologie & Discipline de Trader</td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+                <td>Stratégies d'Analyse Technique Avancées</td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+                <td>Accès VIP au groupe Telegram d'analyses</td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="cross">✕</span></td>
+                <td><span class="check">✓</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <button id="btn-buy" class="btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+            Procéder au paiement (<span id="course-price">--</span>)
+        </button>
+    </div>
+</main>
+
+<script>
+    // Récupération de l'offre choisie via l'URL (?level=debutant)
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get('level') || 'debutant';
+
+    const courses = {
+        'debutant': { title: 'Formation Débutant', subtitle: 'Pour poser des bases solides sans risquer inutilement votre capital.', price: '99€' },
+        'intermediaire': { title: 'Formation Intermédiaire', subtitle: 'Pour maîtriser le risque, construire un plan de trading et gérer ses émotions.', price: '199€' },
+        'avance': { title: 'Formation Avancée', subtitle: 'L'expérience complète : stratégies poussées, optimisation et accès à la communauté.', price: '299€' }
+    };
+
+    const current = courses[level] || courses['debutant'];
+    document.getElementById('course-title').textContent = current.title;
+    document.getElementById('course-subtitle').textContent = current.subtitle;
+    document.getElementById('course-price').textContent = current.price;
+
+    document.getElementById('btn-buy').addEventListener('click', () => {
+        alert('Redirection vers la page de paiement sécurisée Stripe...');
+        // Ici, on connectera le checkout Stripe
+    });
+</script>
+
+</body>
+</html>

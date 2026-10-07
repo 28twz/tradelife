@@ -2,169 +2,406 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>TradeLife – Formations Trading</title>
+    <title>TradeLife – Formations Trading Certifiées</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Police Inter avec poids 400 et 500 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<header class="navbar">
-    <div class="logo">TradeLife</div>
-    <nav>
-        <a href="#home" class="nav-link">Accueil</a>
+<!-- Header / Navigation Pilule Flottante -->
+<header class="navbar-pill">
+    <a href="#home" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        TRADELIFE
+    </a>
+    
+    <button class="menu-toggle" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <nav class="nav-menu">
+        <div class="nav-slider"></div>
+        <a href="#method" class="nav-link">Découvrir</a>
         <a href="#formations" class="nav-link">Formations</a>
         <a href="#about" class="nav-link">Qui sommes-nous</a>
         <a href="#testimonials" class="nav-link">Avis</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="pages/login.html" class="btn-nav">Connexion</a>
+        <a href="pages/login.html" class="btn-header-cta">Espace Membre</a>
     </nav>
 </header>
 
-<!-- HERO -->
+<!-- Hero / Accueil -->
 <section id="home" class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="assets/vdo/trading.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-
+    <div class="hero-bg-workspace"></div>
+    <div class="hero-fog-overlay"></div>
+    
     <div class="hero-content">
-        <h1>Maîtrise le trading.<br>Construis ton avenir.</h1>
-        <p>Des formations sérieuses, structurées et responsables.</p>
-        <a href="#formations" class="btn-primary nav-link">Découvrir les formations</a>
-    </div>
-</section>
-
-<div class="separator"></div>
-
-<!-- FORMATIONS -->
-<section id="formations" class="section">
-    <h2>Nos formations</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Débutant</h3>
-            <p>Les bases du trading, comprendre les marchés et éviter les erreurs.</p>
-            <span class="price">99€</span>
-            <button>Acheter</button>
+        <div class="badge-tag">
+            <span class="badge-dot"></span> L'apprentissage par étapes
         </div>
-        <div class="card">
-            <h3>Intermédiaire</h3>
-            <p>Gestion du risque, stratégies et psychologie.</p>
-            <span class="price">199€</span>
-            <button>Acheter</button>
+        <h1>Rejoignez les meilleures<br>formations en <span class="gradient-text trading-shimmer">Trading</span></h1>
+        <p>Une méthode claire, étape par étape, pour maîtriser les marchés sans bruit ni blabla.</p>
+        
+        <div class="hero-actions">
+            <a href="#formations" class="btn-primary">Découvrir le programme</a>
+            <a href="#method" class="btn-secondary">Découvrir la méthode &rarr;</a>
         </div>
-        <div class="card">
-            <h3>Avancé</h3>
-            <p>Discipline, optimisation et vision long terme.</p>
-            <span class="price">299€</span>
-            <button>Acheter</button>
+
+        <div class="trustpilot-hero">
+            <span class="trust-label">Excellent</span>
+            <div class="trust-stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="half-star">★</span>
+            </div>
+            <span class="trust-count">764 avis sur <strong>Trustpilot</strong></span>
         </div>
     </div>
 </section>
 
-<div class="separator"></div>
+<!-- Section Découvrir / La Méthode (Style Apple & Scroll Sticky) -->
+<section id="method" class="method-sticky-section">
+    <div class="container method-container">
+        
+        <!-- Colonne de gauche : Visuel fixe / sticky -->
+        <div class="method-visual-col">
+            <div class="method-visual-card">
+                <!-- Étape 1 -->
+                <div class="method-slide active" data-step="1">
+                    <div class="visual-mockup-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="mockup-title">tradelife-workspace.app/module-1</span>
+                    </div>
+                    <div class="visual-mockup-body">
+                        <div class="mockup-chart-placeholder">
+                            <span class="chart-badge">Étape 01 • Fondamentaux</span>
+                            <h3>Maîtrisez vos graphiques et outils</h3>
+                            <p>Apprenez à configurer vos espaces de travail sans vous noyer sous les indicateurs inutiles.</p>
+                        </div>
+                    </div>
+                </div>
 
-<!-- ABOUT -->
-<section id="about" class="section dark">
-  <div class="about-intro">
-    <h2>Qui sommes-nous ?</h2>
-    <p>
-      TradeLife est bien plus qu'une simple plateforme de formation.  
-      Nous sommes une communauté passionnée, engagée à vous accompagner dans chaque étape de votre apprentissage du trading.  
-      Nous croyons en une approche réaliste, disciplinée et responsable, loin des promesses illusoires.  
-      Notre mission est de vous donner les clés pour maîtriser les marchés en toute confiance et sérénité.
-    </p>
-  </div>
+                <!-- Étape 2 -->
+                <div class="method-slide" data-step="2">
+                    <div class="visual-mockup-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="mockup-title">tradelife-workspace.app/risk-management</span>
+                    </div>
+                    <div class="visual-mockup-body">
+                        <div class="mockup-chart-placeholder risk-bg">
+                            <span class="chart-badge">Étape 02 • Sécurité</span>
+                            <h3>Protégez votre capital en priorité</h3>
+                            <p>Le money management rigoureux : calculez chaque risque millimètre par millimètre.</p>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="about-values">
-    <h3>Nos valeurs</h3>
-    <ul>
-      <li>Transparence et honnêteté</li>
-      <li>Apprentissage concret et structuré</li>
-      <li>Responsabilité et gestion des risques</li>
-    </ul>
-    <p>Aucune promesse de gains, uniquement des compétences concrètes.</p>
-  </div>
-</section>
+                <!-- Étape 3 -->
+                <div class="method-slide" data-step="3">
+                    <div class="visual-mockup-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="mockup-title">tradelife-workspace.app/community</span>
+                    </div>
+                    <div class="visual-mockup-body">
+                        <div class="mockup-chart-placeholder community-bg">
+                            <span class="chart-badge">Étape 03 • Mentorat & Live</span>
+                            <h3>Progressez aux côtés d'experts</h3>
+                            <p>Débriefings en direct, analyses de marché et accompagnement personnalisé au quotidien.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="separator"></div>
+        <!-- Colonne de droite : Texte -->
+        <div class="method-content-col">
+            <div class="method-header-top">
+                <span class="section-tag">Découvrir la méthode</span>
+                <h2>Une approche conçue pour votre réussite, sans jargon inutile.</h2>
+            </div>
 
-<!-- AVIS – BOX CENTRÉE -->
-<section id="testimonials" class="section">
-    <div class="trust-soon">
-        <div class="trust-badge">Trustpilot</div>
-        <p class="trust-title">Avis certifiés bientôt disponibles</p>
-        <p class="trust-text">
-            TradeLife est actuellement en phase de lancement.  
-            Les premiers élèves suivront nos formations très prochainement et
-            leurs avis seront collectés et affichés via <strong>Trustpilot</strong>.
-        </p>
-        <p class="trust-sub">
-            Aucun faux avis. Aucune manipulation.  
-            La confiance se construit avec le temps.
-        </p>
+            <!-- Étape 1 Texte -->
+            <div class="method-step-block" data-step="1">
+                <span class="step-number">01</span>
+                <h3>Bases & Prise en main des outils</h3>
+                <p>Trop de débutants se perdent dans des stratégies complexes avant même de comprendre les fondamentaux. Nous vous offrons une structure claire pour tout paramétrer de zéro en toute sérénité.</p>
+                <ul class="step-features">
+                    <li>✓ Lecture claire de l'action des prix</li>
+                    <li>✓ Configuration des plateformes de trading</li>
+                    <li>✓ Zéro blabla, théorie directement applicable</li>
+                </ul>
+            </div>
+
+            <!-- Étape 2 Texte -->
+            <div class="method-step-block" data-step="2">
+                <span class="step-number">02</span>
+                <h3>Gestion du risque et psychologie</h3>
+                <p>La différence entre un trader qui perd et un trader rentable réside dans la discipline. Maîtrisez l'art de couper vos pertes rapidement et de laisser courir vos gains sans stress émotionnel.</p>
+                <ul class="step-features">
+                    <li>✓ Calcul automatisé de la taille des positions</li>
+                    <li>✓ Maîtrise des biais psychologiques</li>
+                    <li>✓ Plan de trading strict et reproductible</li>
+                </ul>
+            </div>
+
+            <!-- Étape 3 Texte -->
+            <div class="method-step-block" data-step="3">
+                <span class="step-number">03</span>
+                <h3>Autonomie et accompagnement continu</h3>
+                <p>Vous n'êtes jamais seul face aux graphiques. Rejoignez un cercle d'investisseurs motivés, participez à nos sessions de débriefing et gagnez en totale autonomie financière.</p>
+                <ul class="step-features">
+                    <li>✓ Accès aux briefings de marché réguliers</li>
+                    <li>✓ Communauté active et bienveillante</li>
+                    <li>✓ Évolution à votre propre rythme</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<div class="separator"></div>
+<!-- Section Formations & Packs (DA sombre / Cartes retournables avec bouton "+") -->
+<section id="formations" class="formations-dark-section">
+    <div class="container">
+        <div class="section-header dark-header">
+            <span class="section-tag-dark">Nos Formations & Packs</span>
+            <h2>Choisissez votre niveau et centralisez votre réussite</h2>
+            <p class="section-sub-dark">Accédez à votre espace membre, suivez votre dashboard et profitez d'outils professionnels adaptés à vos ambitions.</p>
+        </div>
 
-<!-- CONTACT -->
-<section id="contact" class="section dark">
-    <h2>Contactez-nous</h2>
-    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
-        <input type="text" name="prenom" placeholder="Prénom" required>
-        <input type="text" name="nom" placeholder="Nom" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Votre message..." required></textarea>
-        <button type="submit">Envoyer</button>
-        <p id="form-feedback"></p>
-    </form>
+        <div class="pricing-grid">
+            
+            <!-- Carte 1 : Pack Initiation (19.99€ / mois) -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="card-top-row">
+                            <span class="pack-badge">Essentiel</span>
+                            <button class="btn-flip-icon" aria-label="Voir les détails">+</button>
+                        </div>
+                        <h3>Pack Initiation</h3>
+                        <p class="pack-desc">Pour découvrir les marchés et poser des bases solides en toute sécurité.</p>
+                        <div class="price">19<span class="decimal">,99€</span> <span class="period">/ mois</span></div>
+                        <ul class="pack-list-preview">
+                            <li>✓ Accès aux modules fondamentaux</li>
+                            <li>✓ Canal Telegram découverte</li>
+                            <li>✓ Premiers pas sur les graphiques</li>
+                        </ul>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <div class="card-back-header">
+                            <h3>Détails du Pack</h3>
+                            <button class="btn-flip-back" aria-label="Retour">&times;</button>
+                        </div>
+                        <ul class="pack-details-compact">
+                            <li>• 15 leçons vidéo fondamentales</li>
+                            <li>• Accès canal Telegram découverte</li>
+                            <li>• Modèles de notes et lexique trader</li>
+                            <li>• Support communautaire de base</li>
+                            <li>• Sans engagement, résiliable à tout moment</li>
+                        </ul>
+                        <a href="pages/formation-detail.html?level=initiation" class="btn-primary-dark">Souscrire au Pack</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 2 : Pack Avancé (59.99€ / mois) -->
+            <div class="flip-card card-featured-dark">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="badge-featured-dark">Populaire</div>
+                        <div class="card-top-row">
+                            <span class="pack-badge">Stratégie</span>
+                            <button class="btn-flip-icon" aria-label="Voir les détails">+</button>
+                        </div>
+                        <h3>Pack Avancé</h3>
+                        <p class="pack-desc">Maîtrisez la gestion du risque et construisez vos plans de trading rigoureux.</p>
+                        <div class="price">59<span class="decimal">,99€</span> <span class="period">/ mois</span></div>
+                        <ul class="pack-list-preview">
+                            <li>✓ Analyse technique poussée</li>
+                            <li>✓ Risk management & psychologie</li>
+                            <li>✓ Accès aux lives de débriefing</li>
+                        </ul>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <div class="card-back-header">
+                            <h3>Détails du Pack</h3>
+                            <button class="btn-flip-back" aria-label="Retour">&times;</button>
+                        </div>
+                        <ul class="pack-details-compact">
+                            <li>• 35 leçons vidéo avancées et cas réels</li>
+                            <li>• Tableaux de calcul de risque automatisés</li>
+                            <li>• Sessions live de débriefing mensuelles</li>
+                            <li>• Stratégies de plan de trading strict</li>
+                            <li>• Accompagnement intermédiaire</li>
+                        </ul>
+                        <a href="pages/formation-detail.html?level=avance" class="btn-primary-dark">Souscrire au Pack</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 3 : Pack Ultime Dashboard (299.99€ à vie) -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- Face Avant -->
+                    <div class="flip-card-front">
+                        <div class="card-top-row">
+                            <span class="pack-badge ultimate-badge">Tout-en-un</span>
+                            <button class="btn-flip-icon" aria-label="Voir les détails">+</button>
+                        </div>
+                        <h3>Pack Ultime Dashboard</h3>
+                        <p class="pack-desc">L'écosystème complet pour centraliser votre trading et trader comme un pro.</p>
+                        <div class="price">299<span class="decimal">,99€</span> <span class="period">/ à vie</span></div>
+                        <ul class="pack-list-preview">
+                            <li>✓ Intégralité des formations (Niveaux 1, 2 & 3)</li>
+                            <li>✓ Dashboard centralisé & Journal de trading</li>
+                            <li>✓ Salon VIP Telegram & briefings quotidiens</li>
+                        </ul>
+                    </div>
+                    <!-- Face Arrière -->
+                    <div class="flip-card-back">
+                        <div class="card-back-header">
+                            <h3>Détails du Pack</h3>
+                            <button class="btn-flip-back" aria-label="Retour">&times;</button>
+                        </div>
+                        <ul class="pack-details-compact">
+                            <li>• Accès illimité à vie à tout le catalogue</li>
+                            <li>• Dashboard centralisé & Journal de trading</li>
+                            <li>• Salon VIP Telegram & briefings quotidiens</li>
+                            <li>• Outils professionnels de calcul intégrés</li>
+                            <li>• Support prioritaire 7j/7</li>
+                        </ul>
+                        <a href="pages/formation-detail.html?level=ultime" class="btn-primary-dark">Obtenir l'Accès à Vie</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer-advanced">
-  <div class="footer-main">
-    <div class="footer-left">
-      <p>
-        Copyright © 2026 TRADELIFE® est une marque déposée. Tous droits réservés.
-      </p>
-      <p>
-        Les formulaires de ce site sont protégés par reCAPTCHA et les 
-        <strong>règles de confidentialité</strong> ainsi que les 
-        <strong>conditions d'utilisation</strong> des services Google s'appliquent.
-      </p>
-      <p class="disclaimer">
-        Trader sur les marchés financiers en général comporte de nombreux risques. Vous pouvez subir des pertes supérieures à l'investissement initial et donc engager votre santé et votre responsabilité financières. Nous vous recommandons donc d'agir sur ces marchés financiers avec la plus grande prudence. En outre, il est essentiel que vous connaissiez tous les mécanismes inhérents au trading avant de commencer vos transactions sur des marchés « réels ». Les CFD sont des instruments complexes et présentent un risque élevé de perte rapide en capital en raison de l'effet de levier. Entre 70 et 89 % des comptes de clients de détail perdent de l'argent lors de la négociation de CFD. Vous devez vous assurer que vous comprenez comment les CFD fonctionnent et que vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Dans tous les cas, TRADELIFE ne saurait être tenue pour responsable de vos pertes sur ces marchés. Vous allez apprendre comment réussir en bourse grâce à une formation de trader pour débutant et des cours étudiés pour un apprentissage rapide et efficace. Commencer en bourse n'aura jamais été aussi simple, vous allez apprendre tout le mécanisme du trading afin d'être performant et savoir comment et quand acheter, comment investir en minimisant les risques grâce à des cours en ligne pour débuter avec des bases solides et démarrer un apprentissage de trader efficace. Il existe plusieurs plateformes d'investissements multi-actifs. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est assujetti à un risque.
-      </p>
+<!-- Section Qui sommes-nous -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Qui sommes-nous</span>
+            <h2>Derrière TradeLife</h2>
+            <p class="section-sub">Une approche humaine, transparente et axée sur la transmission de compétences réelles.</p>
+        </div>
+        <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            <div class="about-img" style="background: var(--bg-light); border: 1px solid var(--border); border-radius: var(--radius-lg); height: 350px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-weight: 500;">
+                [ Emplacement Photo de ton Frère ]
+            </div>
+            <div class="about-text">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Passionné par les marchés et la pédagogie</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Fondateur de TradeLife, mon parcours m'a amené à constater une réalité : trop de débutants perdent de l'argent par manque de structure et de pédagogie adaptée.
+                </p>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    J'ai conçu cet écosystème pour offrir ce que j'aurais aimé trouver à mes débuts : des formations claires, sans promesses illusoires, axées sur la maîtrise du risque et la rigueur.
+                </p>
+                <a href="#formations" class="btn-primary">Découvrir les formations</a>
+            </div>
+        </div>
     </div>
-    <div class="footer-right">
-      <img src="assets/img/qualiopi.png" alt="Qualiopi certification" class="qualioipi-logo">
-      <p class="certification-text">
-        Certification qualité délivrée au titre de la catégorie d'action suivante : Actions de formation.<br>
-        <a href="assets/docs/qualiopi-certificat-2026.pdf" class="cert-link"><strong>Consulter notre certificat Qualiopi</strong></a>
-      </p>
-      <nav class="footer-nav">
-        <a href="pages/mentions-legales.html">Mentions légales</a>
-        <a href="pages/politique-confidentialite.html">Politique de confidentialité</a>
-        <a href="pages/cgu-cgv.html">CGU/CGV</a>
-      </nav>
+</section>
 
-      <div class="footer-socials">
-        <p>Nos Réseaux</p>
-        <a href="https://t.me/TradeLife" target="_blank" rel="noopener" aria-label="Telegram TradeLife">
-          <img src="assets/img/telegram.png" alt="Telegram" class="social-icon">
-        </a>
-        <a href="https://www.instagram.com/TradeLife" target="_blank" rel="noopener" aria-label="Instagram TradeLife">
-          <img src="assets/img/instagram.png" alt="Instagram" class="social-icon">
-        </a>
-        <a href="https://www.tiktok.com/@TradeLife" target="_blank" rel="noopener" aria-label="TikTok TradeLife">
-          <img src="assets/img/tiktok.png" alt="TikTok" class="social-icon">
-        </a>
-      </div>
+<!-- Section Avis -->
+<section id="testimonials" class="section section-gray">
+    <div class="container text-center">
+        <span class="section-tag">Avis TRADELIFE</span>
+        <h2>Des milliers d'investisseurs nous adorent</h2>
+        <p class="section-sub">Comme eux, passez à l'action pour bâtir votre avenir financier.</p>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="avatar">CL</div>
+                    <div>
+                        <strong>Clément</strong>
+                        <div class="stars-box">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                </div>
+                <p>Débutant en trading et ayant pris la formation Starter, j'ai été agréablement surpris de voir à quel point il était facile d'apprendre et de progresser.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="avatar">FP</div>
+                    <div>
+                        <strong>François Pasquier</strong>
+                        <div class="stars-box">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                </div>
+                <p>Très intuitif, compréhensible, interface superbe. Je recommande les yeux fermés !</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="avatar">PH</div>
+                    <div>
+                        <strong>Philippe</strong>
+                        <div class="stars-box">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                </div>
+                <p>Les formations sont extrêmement bien faites, elles permettent de prendre en main les outils en toute sécurité.</p>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
+
+<!-- Section Contact -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Une question avant de vous lancer ?</h2>
+            <p class="section-sub">Notre équipe vous répond sous 24h.</p>
+        </div>
+        <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
+            <div class="form-row">
+                <input type="text" name="prenom" placeholder="Prénom" required>
+                <input type="text" name="nom" placeholder="Nom" required>
+            </div>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Votre message..." required></textarea>
+            <button type="submit" class="btn-primary">Envoyer mon message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#home" class="logo">TRADE<span style="color:var(--green-primary)">LIFE</span></a>
+                <p>Organisme de formation certifié en trading et marchés financiers.</p>
+            </div>
+            <div class="footer-links">
+                <nav>
+                    <a href="pages/mentions-legales.html">Mentions légales</a>
+                    <a href="pages/politique-confidentialite.html">Confidentialité</a>
+                    <a href="pages/cgu-cgv.html">CGU / CGV</a>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 TRADELIFE® – Marque déposée. Tous droits réservés.</p>
+            <p class="disclaimer">Le trading comporte des risques importants de perte en capital. Agissez de manière responsable.</p>
+        </div>
+    </div>
 </footer>
 
 <script src="assets/js/main.js"></script>

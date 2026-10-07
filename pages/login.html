@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <title>Connexion / Inscription – TradeLife</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- SDK Supabase (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
 <header class="navbar">
-    <div class="logo">TradeLife</div>
-    <nav>
-        <a href="../index.html">Accueil</a>
+    <a href="../index.html" class="logo">TradeLife</a>
+    <nav class="nav-menu">
+        <a href="../index.html#home">Accueil</a>
         <a href="../index.html#formations">Formations</a>
     </nav>
 </header>
@@ -26,7 +25,6 @@
             <button class="auth-tab" id="tab-signup">Inscription</button>
         </div>
 
-        <!-- Formulaire de connexion -->
         <form id="form-login" class="auth-form">
             <div class="input-group">
                 <label for="login-email">Adresse e-mail</label>
@@ -39,7 +37,6 @@
             <button type="submit" class="btn-auth">Se connecter</button>
         </form>
 
-        <!-- Formulaire d'inscription -->
         <form id="form-signup" class="auth-form" style="display: none;">
             <div class="input-group">
                 <label for="signup-email">Adresse e-mail</label>
@@ -58,7 +55,6 @@
 
 <script src="../assets/js/auth.js"></script>
 <script>
-    // Basculement dynamique entre Onglet Connexion et Inscription
     const tabLogin = document.getElementById('tab-login');
     const tabSignup = document.getElementById('tab-signup');
     const formLogin = document.getElementById('form-login');
