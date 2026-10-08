@@ -2,81 +2,66 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion / Inscription – TradeLife</title>
+    <title>Espace Membre - TradeLife</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/pack-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/pack-favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/pack-favicon/apple-touch-icon.png">
+    
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body>
+<body class="login-body">
 
-<header class="navbar">
-    <a href="../index.html" class="logo">TradeLife</a>
+<!-- Header Minimaliste -->
+<header class="navbar-pill">
+    <a href="../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        TRADELIFE
+    </a>
     <nav class="nav-menu">
-        <a href="../index.html#home">Accueil</a>
-        <a href="../index.html#formations">Formations</a>
+        <div class="nav-slider"></div>
+        <a href="../index.html" class="btn-header-cta">Revenir à l'accueil</a>
     </nav>
 </header>
 
-<main class="auth-container">
-    <div class="auth-card">
-        <div class="auth-tabs">
-            <button class="auth-tab active" id="tab-login">Connexion</button>
-            <button class="auth-tab" id="tab-signup">Inscription</button>
+<!-- Carte de connexion centrée -->
+<main class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Bon retour parmi nous</h2>
+            <p>Connectez-vous pour accéder à votre dashboard</p>
         </div>
-
-        <form id="form-login" class="auth-form">
+        
+        <form id="login-form" class="auth-form" onsubmit="event.preventDefault();">
             <div class="input-group">
-                <label for="login-email">Adresse e-mail</label>
-                <input type="email" id="login-email" required placeholder="exemple@email.com">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" placeholder="exemple@mail.com" required>
             </div>
+            
             <div class="input-group">
-                <label for="login-password">Mot de passe</label>
-                <input type="password" id="login-password" required placeholder="••••••••">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" placeholder="••••••••" required>
             </div>
-            <button type="submit" class="btn-auth">Se connecter</button>
+            
+            <div class="login-options">
+                <label class="remember-me">
+                    <input type="checkbox"> Se souvenir de moi
+                </label>
+                <a href="#" class="forgot-pwd">Mot de passe oublié ?</a>
+            </div>
+            
+            <!-- Réutilisation de ton bouton moderne -->
+            <button type="submit" class="btn-meta-submit">Se connecter</button>
         </form>
-
-        <form id="form-signup" class="auth-form" style="display: none;">
-            <div class="input-group">
-                <label for="signup-email">Adresse e-mail</label>
-                <input type="email" id="signup-email" required placeholder="exemple@email.com">
-            </div>
-            <div class="input-group">
-                <label for="signup-password">Mot de passe</label>
-                <input type="password" id="signup-password" required placeholder="Au moins 6 caractères">
-            </div>
-            <button type="submit" class="btn-auth">Créer un compte</button>
-        </form>
-
-        <p id="auth-feedback" class="auth-feedback"></p>
+        
+        <div class="login-footer">
+            <p>Pas encore membre ? <a href="../index.html#formations">Découvrir nos packs</a></p>
+        </div>
     </div>
 </main>
 
-<script src="../assets/js/auth.js"></script>
-<script>
-    const tabLogin = document.getElementById('tab-login');
-    const tabSignup = document.getElementById('tab-signup');
-    const formLogin = document.getElementById('form-login');
-    const formSignup = document.getElementById('form-signup');
-    const feedback = document.getElementById('auth-feedback');
-
-    tabLogin.addEventListener('click', () => {
-        tabLogin.classList.add('active');
-        tabSignup.classList.remove('active');
-        formLogin.style.display = 'flex';
-        formSignup.style.display = 'none';
-        feedback.textContent = '';
-    });
-
-    tabSignup.addEventListener('click', () => {
-        tabSignup.classList.add('active');
-        tabLogin.classList.remove('active');
-        formSignup.style.display = 'flex';
-        formLogin.style.display = 'none';
-        feedback.textContent = '';
-    });
-</script>
-
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

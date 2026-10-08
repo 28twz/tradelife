@@ -6,7 +6,7 @@ window.scrollTo(0, 0);
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Navigation Smooth Scroll (avec gestion personnalisée pour le contact si besoin)
+    // 1. Navigation Smooth Scroll
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', e => {
             const href = link.getAttribute('href');
@@ -87,8 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 5. Validation sécurisée du formulaire de contact et Pop-up style iOS
-    const contactForm = document.getElementById("contact-form");
+    // Fonction globale pour afficher la Pop-up iOS
     const popup = document.getElementById("ios-popup");
     const popupTitle = document.getElementById("ios-popup-title");
     const popupText = document.getElementById("ios-popup-text");
@@ -114,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 5.A Validation sécurisée du formulaire de contact
+    const contactForm = document.getElementById("contact-form");
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -153,7 +154,41 @@ document.addEventListener("DOMContentLoaded", () => {
             contactForm.reset();
         });
     }
-});
+
+    // 5.B Validation de la création de mot de passe (Setup Account)
+    const setupForm = document.getElementById("setup-form");
+    if (setupForm) {
+        setupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const pwd = document.getElementById("new-password").value;
+            const confirmPwd = document.getElementById("confirm-password").value;
+
+            // Regex de sécurité : au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 symbole spécial
+            const securePwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{12,}$/;
+
+            if (!pwd || !confirmPwd) {
+                showPopup("Champs vides", "Veuillez remplir les deux champs de mot de passe.");
+                return;
+            }
+
+            if (!securePwdRegex.test(pwd)) {
+                showPopup("Mot de passe faible", "Votre mot de passe doit contenir au moins 12 caractères, incluant des majuscules, minuscules, chiffres et symboles spéciaux.");
+                return;
+            }
+
+            if (pwd !== confirmPwd) {
+                showPopup("Erreur de confirmation", "Les mots de passe ne correspondent pas. Veuillez vérifier votre saisie.");
+                return;
+            }
+
+            // Si tout est bon (simulation avant l'intégration du vrai backend)
+            showPopup("Compte activé !", "Votre mot de passe a été enregistré avec succès. Vous allez être redirigé vers votre espace membre.");
+            setupForm.reset();
+        });
+    }
+
+}); // <-- C'est ici que se ferme proprement le DOMContentLoaded
 
 // 6. Navigation Pilule Flottante - Synchro Scroll & Hover de la souris
 window.addEventListener('load', () => {
@@ -202,18 +237,16 @@ window.addEventListener('load', () => {
 
         navMenuContainer.addEventListener('mouseleave', () => {
             isHovered = false;
-            // Au départ de la souris, on remet le lien actif en fonction de la section visible ou du bouton CTA
             updateActiveNavOnScroll();
         });
 
         // 7. Synchronisation automatique du slider de la navbar selon la position du scroll
         function updateActiveNavOnScroll() {
-            if (isHovered) return; // Ne perturbe pas l'utilisateur s'il a sa souris sur le menu
+            if (isHovered) return;
 
             const scrollPos = window.scrollY + 200;
             let activeItem = defaultActive;
 
-            // Récupère toutes les sections correspondantes aux liens de la navbar
             const sections = {
                 '#method': document.querySelector('#method'),
                 '#formations': document.querySelector('#formations'),
@@ -222,7 +255,6 @@ window.addEventListener('load', () => {
                 '#contact': document.querySelector('#contact')
             };
 
-            // Vérifie quelle section est actuellement affichée à l'écran
             for (const [selector, section] of Object.entries(sections)) {
                 if (section) {
                     const top = section.offsetTop;

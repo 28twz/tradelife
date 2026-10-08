@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Activer mon compte - TradeLife</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/pack-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/pack-favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/pack-favicon/apple-touch-icon.png">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="login-body">
+
+<!-- Header Minimaliste -->
+<header class="navbar-pill">
+    <a href="../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        TRADELIFE
+    </a>
+    <nav class="nav-menu">
+        <div class="nav-slider"></div>
+        <a href="../index.html" class="btn-header-cta">Revenir à l'accueil</a>
+    </nav>
+</header>
+
+<!-- Carte de création de mot de passe centrée -->
+<main class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Bienvenue chez TradeLife !</h2>
+            <p>Votre paiement est validé. Définissez votre mot de passe pour sécuriser votre espace membre.</p>
+        </div>
+        
+        <form id="setup-form" class="auth-form" novalidate>
+            <!-- L'email sera pré-rempli automatiquement par l'URL envoyée par Supabase -->
+            <div class="input-group">
+                <label for="email">Votre email de commande</label>
+                <input type="email" id="email" value="client@email.com" readonly style="background-color: #f8fafc; color: #94a3b8; cursor: not-allowed;">
+            </div>
+            
+            <div class="input-group">
+                <label for="new-password">Nouveau mot de passe</label>
+                <input type="password" id="new-password" placeholder="Min. 12 caractères (Maj, min, chiffre, symbole)" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm-password">Confirmez le mot de passe</label>
+                <input type="password" id="confirm-password" placeholder="Répétez le mot de passe" required>
+            </div>
+            
+            <button type="submit" class="btn-meta-submit" style="margin-top: 10px;">Activer mon compte</button>
+            
+            <!-- Message de prévention discret -->
+            <p class="pwd-hint">💡 Pensez bien à enregistrer votre mot de passe pour vos prochaines connexions au dashboard.</p>
+        </form>
+    </div>
+</main>
+
+<!-- Pop-up iOS personnalisée pour les erreurs -->
+<div id="ios-popup" class="ios-popup-overlay">
+    <div class="ios-popup-box">
+        <div class="ios-popup-content">
+            <div id="ios-popup-title" class="ios-popup-title">Avertissement</div>
+            <div id="ios-popup-text" class="ios-popup-text">Message d'erreur</div>
+        </div>
+        <button id="ios-popup-close" class="ios-popup-btn">OK</button>
+    </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

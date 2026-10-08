@@ -2,65 +2,78 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Politique de Confidentialité – TradeLife</title>
+    <title>Politique de Confidentialité - TradeLife</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<header class="navbar">
-    <div class="logo">TradeLife</div>
-    <nav>
-        <a href="../index.html">Accueil</a>
-        <a href="../index.html#formations">Formations</a>
-        <a href="login.html" class="btn-nav">Connexion</a>
+<header class="navbar-pill">
+    <a href="../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        TRADELIFE
+    </a>
+    <nav class="nav-menu">
+        <div class="nav-slider"></div>
+        <a href="../index.html" class="btn-header-cta">Revenir à l'accueil</a>
     </nav>
 </header>
 
-<main class="legal">
-    <h1>Politique de Confidentialité (RGPD)</h1>
+<section class="legal-section">
+    <div class="container legal-content">
+        <h1>Politique de Confidentialité</h1>
+        <p class="last-update">En conformité avec le RGPD (Règlement Général sur la Protection des Données)</p>
 
-    <h2>1. Collecte des données personnelles</h2>
-    <p>
-        Dans le cadre de l'utilisation du site TradeLife, nous pouvons collecter des données personnelles telles que votre nom, prénom, adresse e-mail et données de connexion lors de votre inscription ou de l'envoi d'un formulaire de contact.
-    </p>
+        <h2>1. Collecte des données personnelles</h2>
+        <p>Lors de votre navigation et de l'utilisation de nos services sur TradeLife, nous pouvons être amenés à collecter les données suivantes :</p>
+        <ul>
+            <li><strong>Données d'identité :</strong> Prénom, Nom.</li>
+            <li><strong>Données de contact :</strong> Adresse email.</li>
+            <li><strong>Données de transaction :</strong> Historique des achats (les informations de carte bancaire sont traitées exclusivement par notre prestataire de paiement sécurisé, Stripe, et ne transitent jamais sur nos serveurs).</li>
+            <li><strong>Données techniques :</strong> Adresse IP, logs de connexion, statistiques de navigation.</li>
+        </ul>
 
-    <h2>2. Utilisation et finalités</h2>
-    <p>
-        Vos données sont utilisées exclusivement pour :
-    </p>
-    <ul>
-        <li>Gérer la création de votre compte et l'accès à votre espace membre.</li>
-        <li>Traiter l'achat et l'accès aux formations souscrites.</li>
-        <li>Répondre aux demandes envoyées via le formulaire de contact.</li>
-    </ul>
+        <h2>2. Utilisation de vos données</h2>
+        <p>Les données collectées sont utilisées pour les finalités suivantes :</p>
+        <ul>
+            <li>La création et la gestion de votre espace membre.</li>
+            <li>Le traitement de vos commandes et la facturation.</li>
+            <li>L'envoi d'emails transactionnels (confirmation de commande, réinitialisation de mot de passe).</li>
+            <li>L'envoi de la newsletter (uniquement si vous y avez expressément consenti).</li>
+            <li>La réponse à vos demandes via le formulaire de contact.</li>
+        </ul>
 
-    <h2>3. Conservation et sécurité des données</h2>
-    <p>
-        Vos informations d'authentification et données utilisateurs sont stockées de manière sécurisée via notre infrastructure backend chez <strong>Supabase</strong>. Vos mots de passe sont chiffrés et ne sont jamais enregistrés en clair.
-    </p>
+        <h2>3. Durée de conservation</h2>
+        <p>Vos données personnelles sont conservées pendant la durée stricte nécessaire à la gestion de la relation commerciale. En cas d'inactivité de votre compte pendant plus de 3 ans, vos données seront supprimées ou anonymisées, à l'exception des données de facturation conservées 10 ans pour des raisons légales et fiscales.</p>
 
-    <h2>4. Vos droits (RGPD)</h2>
-    <p>
-        Conformément à la réglementation européenne (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles. Vous pouvez exercer ce droit à tout moment en nous contactant à : <strong>occ.enzorabet@gmail.com</strong>.
-    </p>
-</main>
+        <h2>4. Partage des données</h2>
+        <p>Vos données ne sont jamais vendues à des tiers. Elles peuvent être transmises de manière sécurisée à nos sous-traitants strictement pour l'exécution des services :</p>
+        <ul>
+            <li><strong>Stripe :</strong> Pour la gestion sécurisée des paiements.</li>
+            <li><strong>[Nom de ton outil d'emailing, ex: Brevo ou Resend] :</strong> Pour l'envoi des emails et newsletters.</li>
+        </ul>
 
-<footer class="footer-advanced">
-    <div class="footer-main">
-        <div class="footer-left">
-            <p>Copyright © 2026 TRADELIFE® – Tous droits réservés.</p>
-        </div>
-        <div class="footer-right">
-            <nav class="footer-nav">
-                <a href="mentions-legales.html">Mentions légales</a>
-                <a href="politique-confidentialite.html">Politique de confidentialité</a>
-                <a href="cgu-cgv.html">CGU/CGV</a>
-            </nav>
+        <h2>5. Vos droits (RGPD)</h2>
+        <p>Conformément à la réglementation européenne (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants sur vos données : droit d'accès, de rectification, d'effacement (droit à l'oubli), de limitation du traitement et de portabilité.</p>
+        <p>Pour exercer ces droits, vous pouvez nous contacter à tout moment à l'adresse suivante : <strong>contact@tradelife.fr</strong>. Une réponse vous sera apportée dans un délai maximum de 30 jours.</p>
+
+        <h2>6. Cookies</h2>
+        <p>Le site TradeLife utilise des cookies techniques strictement nécessaires au fonctionnement du site (maintien de la session utilisateur, sécurité) qui ne requièrent pas de consentement préalable, ainsi que des cookies d'analyse d'audience (anonymisés).</p>
+    </div>
+</section>
+
+<footer class="footer-modern">
+    <div class="container text-center">
+        <p>Copyright © 2026 TRADELIFE® – Tous droits réservés.</p>
+        <div style="margin-top: 15px;">
+            <a href="mentions-legales.html" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Mentions Légales</a>
+            <a href="politique-confidentialite.html" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Confidentialité</a>
+            <a href="cgu-cgv.html" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">CGU / CGV</a>
         </div>
     </div>
 </footer>
 
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
