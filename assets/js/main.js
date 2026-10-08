@@ -86,9 +86,82 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
+
+    // 5. Validation sécurisée du formulaire de contact et Pop-up style iOS
+    const contactForm = document.getElementById("contact-form");
+    const popup = document.getElementById("ios-popup");
+    const popupTitle = document.getElementById("ios-popup-title");
+    const popupText = document.getElementById("ios-popup-text");
+    const popupClose = document.getElementById("ios-popup-close");
+
+    function showPopup(title, message) {
+        if (popup && popupTitle && popupText) {
+            popupTitle.textContent = title;
+            popupText.textContent = message;
+            popup.classList.add("active");
+        }
+    }
+
+    if (popupClose && popup) {
+        popupClose.addEventListener("click", () => {
+            popup.classList.remove("active");
+        });
+
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) {
+                popup.classList.remove("active");
+            }
+        });
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Empêche le rechargement brutal de la page
+
+            const prenom = document.getElementById("form-prenom").value.trim();
+            const nom = document.getElementById("form-nom").value.trim();
+            const email = document.getElementById("form-email").value.trim();
+            const objet = document.getElementById("form-objet").value.trim();
+            const message = document.getElementById("form-message").value.trim();
+
+            // 1. Vérification champs vides
+            if (!prenom || !nom || !email || !objet || !message) {
+                showPopup("Formulaire incomplet", "Veuillez remplir l'intégralité des champs avant d'envoyer votre message.");
+                return;
+            }
+
+            // 2. Vérification cohérence Prénom / Nom (anti suites de lettres aberrantes)
+            const nameRegex = /^[a-zA-Zàâäéèêëïîôöùûüç -]{2,}$/;
+            const gibberishCheck = /(.)\1{3,}/; 
+            if (!nameRegex.test(prenom) || gibberishCheck.test(prenom) || !nameRegex.test(nom) || gibberishCheck.test(nom)) {
+                showPopup("Nom invalide", "Veuillez entrer un prénom et un nom valides et cohérents.");
+                return;
+            }
+
+            // 3. Vérification avancée de l'email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showPopup("Email invalide", "Veuillez fournir une adresse email vérifiable (contenant un '@' et un domaine valide).");
+                return;
+            }
+
+            // 4. Filtrage des insultes ou propos inappropriés
+            const bannedWords = ["connard", "pute", "salope", "merde", "enculé", "fdp", "connasse", "nique", "idiot", "cretin"];
+            const fullText = (objet + " " + message).toLowerCase();
+            const containsInsult = bannedWords.some(word => fullText.includes(word));
+            if (containsInsult) {
+                showPopup("Message non autorisé", "Votre message comporte des termes non réglementaires ou inappropriés. L'envoi a été annulé.");
+                return;
+            }
+
+            // 5. Si tout est valide, on affiche la pop-up de succès et on réinitialise le formulaire
+            showPopup("Message envoyé !", "Votre message a bien été transmis à notre équipe. Nous vous répondrons dans les plus brefs délais.");
+            contactForm.reset();
+        });
+    }
 });
 
-// 5. Navigation Pilule Flottante - Chargement complet de la page
+// 6. Navigation Pilule Flottante - Chargement complet de la page
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
     
