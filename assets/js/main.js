@@ -6,7 +6,7 @@ window.scrollTo(0, 0);
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Navigation Smooth Scroll
+    // 1. Navigation Smooth Scroll (avec gestion personnalisée pour le contact si besoin)
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', e => {
             const href = link.getAttribute('href');
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
-            e.preventDefault(); // Empêche le rechargement brutal de la page
+            e.preventDefault();
 
             const prenom = document.getElementById("form-prenom").value.trim();
             const nom = document.getElementById("form-nom").value.trim();
@@ -124,13 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const objet = document.getElementById("form-objet").value.trim();
             const message = document.getElementById("form-message").value.trim();
 
-            // 1. Vérification champs vides
             if (!prenom || !nom || !email || !objet || !message) {
                 showPopup("Formulaire incomplet", "Veuillez remplir l'intégralité des champs avant d'envoyer votre message.");
                 return;
             }
 
-            // 2. Vérification cohérence Prénom / Nom (anti suites de lettres aberrantes)
             const nameRegex = /^[a-zA-Zàâäéèêëïîôöùûüç -]{2,}$/;
             const gibberishCheck = /(.)\1{3,}/; 
             if (!nameRegex.test(prenom) || gibberishCheck.test(prenom) || !nameRegex.test(nom) || gibberishCheck.test(nom)) {
@@ -138,30 +136,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // 3. Vérification avancée de l'email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                showPopup("Email invalide", "Veuillez fournir une adresse email vérifiable (contenant un '@' et un domaine valide).");
+                showPopup("Email invalide", "Veuillez fournir une adresse email vérifiable.");
                 return;
             }
 
-            // 4. Filtrage des insultes ou propos inappropriés
             const bannedWords = ["connard", "pute", "salope", "merde", "enculé", "fdp", "connasse", "nique", "idiot", "cretin"];
             const fullText = (objet + " " + message).toLowerCase();
-            const containsInsult = bannedWords.some(word => fullText.includes(word));
-            if (containsInsult) {
-                showPopup("Message non autorisé", "Votre message comporte des termes non réglementaires ou inappropriés. L'envoi a été annulé.");
+            if (bannedWords.some(word => fullText.includes(word))) {
+                showPopup("Message non autorisé", "Votre message comporte des termes non réglementaires. L'envoi a été annulé.");
                 return;
             }
 
-            // 5. Si tout est valide, on affiche la pop-up de succès et on réinitialise le formulaire
             showPopup("Message envoyé !", "Votre message a bien été transmis à notre équipe. Nous vous répondrons dans les plus brefs délais.");
             contactForm.reset();
         });
     }
 });
 
-// 6. Navigation Pilule Flottante - Chargement complet de la page
+// 6. Navigation Pilule Flottante - Synchro Scroll & Hover de la souris
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
     
@@ -171,7 +165,10 @@ window.addEventListener('load', () => {
     const defaultActive = document.querySelector('.btn-header-cta');
 
     if (navMenuContainer && slider && defaultActive) {
+        let isHovered = false;
+
         function moveSlider(item) {
+            if (!item) return;
             const itemLeft = item.offsetLeft;
             const itemWidth = item.offsetWidth;
             const itemHeight = item.offsetHeight;
@@ -189,17 +186,57 @@ window.addEventListener('load', () => {
             item.style.color = '#fff';
         }
 
+        // Initialisation position par défaut (Espace Membre)
         moveSlider(defaultActive);
-        window.addEventListener('resize', () => moveSlider(defaultActive));
+        window.addEventListener('resize', () => {
+            if (!isHovered) moveSlider(defaultActive);
+        });
 
+        // Gestion du survol par la souris
         navItems.forEach(item => {
             item.addEventListener('mouseenter', (e) => {
+                isHovered = true;
                 moveSlider(e.target);
             });
         });
 
         navMenuContainer.addEventListener('mouseleave', () => {
-            moveSlider(defaultActive);
+            isHovered = false;
+            // Au départ de la souris, on remet le lien actif en fonction de la section visible ou du bouton CTA
+            updateActiveNavOnScroll();
         });
+
+        // 7. Synchronisation automatique du slider de la navbar selon la position du scroll
+        function updateActiveNavOnScroll() {
+            if (isHovered) return; // Ne perturbe pas l'utilisateur s'il a sa souris sur le menu
+
+            const scrollPos = window.scrollY + 200;
+            let activeItem = defaultActive;
+
+            // Récupère toutes les sections correspondantes aux liens de la navbar
+            const sections = {
+                '#method': document.querySelector('#method'),
+                '#formations': document.querySelector('#formations'),
+                '#about': document.querySelector('#about'),
+                '#testimonials': document.querySelector('#testimonials'),
+                '#contact': document.querySelector('#contact')
+            };
+
+            // Vérifie quelle section est actuellement affichée à l'écran
+            for (const [selector, section] of Object.entries(sections)) {
+                if (section) {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        activeItem = document.querySelector(`.nav-link[href="${selector}"]`) || defaultActive;
+                        break;
+                    }
+                }
+            }
+
+            moveSlider(activeItem);
+        }
+
+        window.addEventListener('scroll', updateActiveNavOnScroll);
     }
 });

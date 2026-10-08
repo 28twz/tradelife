@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 110px; /* Décale l'ancrage pour laisser de la place à la navbar flottante */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-dark);
   background-color: var(--bg-main);
