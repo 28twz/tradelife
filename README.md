@@ -22,35 +22,6 @@ TradeLife est une plateforme web moderne et épurée dédiée à l'apprentissage
 
 ---
 
-## Structure du projet
-
-tradelife/
-│
-├── index.html                  # Page d'accueil principale
-├── assets/
-│   ├── css/
-│   │   └── style.css           # Feuille de styles globale et responsive
-│   ├── js/
-│   │   └── main.js             # Logique JavaScript (navigation, formulaires, interactions)
-│   └── img/                    # Dossier des images et favicons
-│
-└── pages/
-    ├── login.html              # Espace membre / Connexion
-    ├── formation-detail.html   # Détails d'une formation
-    ├── mentions-legales.html   # Mentions légales
-    ├── politique-confidentialite.html # Politique de confidentialité
-    └── cgu-cgv.html            # Conditions Générales d'Utilisation et de Vente
-
----
-
-## Installation et Utilisation
-
-1. Cloner ou télécharger le projet sur votre machine locale.
-2. Ouvrir le dossier dans un éditeur de code (comme VS Code).
-3. Lancer le projet via une extension de développement local (comme Live Server sur VS Code) ou ouvrir directement le fichier index.html dans votre navigateur web.
-
----
-
 ## Avertissement / Disclaimer
 
 Le trading sur les marchés financiers comporte des risques importants de perte en capital et ne s'adresse qu'à des investisseurs avertis. Les informations et formations proposées par TradeLife le sont à titre éducatif.
